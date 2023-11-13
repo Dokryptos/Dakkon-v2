@@ -1,5 +1,4 @@
 import VideoPlayer from '../components/VideoPlayer'
-import ProgressBar from '../components/ProgressBar'
 
 const VideoContainer = () => {
 
@@ -7,7 +6,6 @@ const VideoContainer = () => {
     return (
         <div>
             <VideoPlayer />
-            <ProgressBar />
         </div>
     )
 };

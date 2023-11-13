@@ -5,8 +5,8 @@ const VideoPlayer = () => {
 
 
     return (
-        <div className="video">
-            <video  controls>
+        <div >
+            <video className="video"  controls>
                 <source src={video3D} type="video/mp4" />
             </video>
         </div>
