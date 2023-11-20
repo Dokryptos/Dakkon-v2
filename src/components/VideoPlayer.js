@@ -8,11 +8,14 @@ import './VideoPlayer.css';
 const VideoPlayer = () => {
 
     const videoRef = useRef(null);
+    const containerRef = useRef(null)
+
     gsap.registerPlugin(ScrollTrigger);
 
     useEffect(() => {
         const video = videoRef.current;
 
+    let ctx = gsap.context(() => {
         let tl = gsap.timeline({
             scrollTrigger: {
                 trigger: 'video',
@@ -36,20 +39,24 @@ const VideoPlayer = () => {
             video.play();
             video.pause();
         }
+    }, containerRef );
+
+        return() => ctx.revert();
     }, []);
 
 
     return(
-        <video
-            ref={videoRef}
-            className='video'
-            playsInline={true}
-            webkit-playsInline='true'
-            preload='auto'
-            muted
-        >
-            <source src={video3D} type='video/mp4' />
-        </video>
+        <div ref={containerRef}>
+            <video
+                ref={videoRef}
+                className='video'
+                style={{ WebkitPlaysInline: true, playsInline: true }}
+                preload='auto'
+                muted
+            >
+                <source src={video3D} type='video/mp4' />
+            </video>
+        </div>
     );
 };
 

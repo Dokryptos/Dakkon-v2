@@ -1,4 +1,5 @@
-import  VideoContainer  from "./Page/Video_Container"
+// import  VideoContainer  from "./Page/Video_Container"
+import VideoPlayer from "./components/VideoPlayer";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
     <div>
 
       <Routes>
-        <Route path="/" element={ <VideoContainer />} />
+        <Route path="/" element={ <VideoPlayer />} />
       </Routes>
     </div>
   );
