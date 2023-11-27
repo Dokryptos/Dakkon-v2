@@ -20,14 +20,22 @@ const VideoPlayer = () => {
             scrollTrigger: {
                 trigger: 'video',
                 start: "top top",
-                end: 'bottom+=200% bottom',
-                scrub: 2,
+                end: 'bottom+=500% bottom',
+                scrub: true,
                 markers: true
             }
         });
 
         video.onloadedmetadata = function () {
-            tl.to(video, { currenTime: video.duration});
+            tl.fromTo(video,
+                {
+                    currentTime: 0,
+                },
+              {
+                    currentTime: video.duration,
+                    ease: 'none',
+              }
+            );
         };
 
         function isTouchDevice() {
@@ -35,10 +43,12 @@ const VideoPlayer = () => {
         }
         if(isTouchDevice()) {
             console.log('rodou FN');
-
-            video.play();
-            video.pause();
+            
+            videoRef.play();
+            videoRef.pause();
         }
+
+
     }, containerRef );
 
         return() => ctx.revert();
